@@ -53,10 +53,6 @@ The following versions were reported by the local Python environment:
 | mujoco-py | 2.1.2.14 |
 | tqdm | 4.67.3 |
 
-The local NVIDIA driver version is 560.94. The PyTorch package has the CUDA 11.8 build tag (`cu118`).
-
-This table records installed package versions; it is not yet a validated clean-install specification. The current evaluation code expects the legacy Gym API. Compatibility with the installed Gym version must be checked before training.
-
 MuJoCo and its system dependencies must also be configured. See the upstream [D4RL](https://github.com/Farama-Foundation/D4RL) and [mujoco-py](https://github.com/openai/mujoco-py) installation instructions.
 
 ## Datasets
@@ -74,32 +70,6 @@ Datasets are accessed through D4RL and are not included in this repository.
 ## Running the Code
 
 Run commands from the repository root in an environment with the required dependencies installed and compatible MuJoCo environments available.
-
-### Reward fusion
-
-```bash
-python -m ours.main_ablation_dynamic_iql
-```
-
-The current default configuration is:
-
-| Setting | Value |
-|---|---|
-| Dataset | hopper-medium-replay-v2 |
-| Seed | 2 |
-| Experiment | full_dynamic_beta |
-| Training steps | 500,000 |
-| Batch size | 256 |
-| Evaluation interval | 10,000 steps |
-| Evaluation episodes | 10 |
-| Auxiliary reward warm-up | 50,000 steps |
-| RND quantiles | 0.25 and 0.90 |
-| Value-residual quantile | 0.60 |
-| Dynamic coefficient range | 0 to 0.06 |
-
-Edit `DATASETS`, `SEEDS`, and `EXPERIMENTS` in `ours/main_ablation_dynamic_iql.py` to configure additional runs.
-
-The default command runs one configuration on one dataset with one seed. It does not automatically reproduce all manuscript experiments.
 
 ### IQL baseline
 
